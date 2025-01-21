@@ -1,38 +1,46 @@
 package org.example;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
+public class AppTest
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+    @Test
+    public void testCSVName() {
+        String csvFile = "table.csv";
+
+        List<Athlete> athletes = new ArrayList<>();
+        athletes.add(new Athlete(11, "Umar Jorgson", "SK", "30:27", new String[]{"xxxox", "xxxxx", "xxoxo"}));
+        athletes.add(new Athlete(1, "Jimmy Smiles", "UK", "29:15", new String[]{"xxoox", "xooxo", "xxxxo"}));
+        athletes.add(new Athlete(27, "Piotr Smitzer", "CZ", "30:10", new String[]{"xxxxx", "xxxxx", "xxxxx"}));
+
+        assertEquals(3, athletes.size());
+        assertEquals("Umar Jorgson", athletes.get(0).athleteName);
+        assertEquals("Jimmy Smiles", athletes.get(1).athleteName);
+        assertEquals("Piotr Smitzer", athletes.get(2).athleteName);
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+
+    @Test
+    public void testCSVCountry() {
+        String csvFile = "table.csv";
+
+        List<Athlete> athletes = new ArrayList<>();
+        athletes.add(new Athlete(11, "Umar Jorgson", "SK", "30:27", new String[]{"xxxox", "xxxxx", "xxoxo"}));
+        athletes.add(new Athlete(1, "Jimmy Smiles", "UK", "29:15", new String[]{"xxoox", "xooxo", "xxxxo"}));
+        athletes.add(new Athlete(27, "Piotr Smitzer", "CZ", "30:10", new String[]{"xxxxx", "xxxxx", "xxxxx"}));
+
+        assertEquals(3, athletes.size());
+        assertEquals("SK", athletes.get(0).countryCode);
+        assertEquals("UK", athletes.get(1).countryCode);
+        assertEquals("CZ", athletes.get(2).countryCode);
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
 }
